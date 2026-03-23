@@ -13,14 +13,31 @@ class Personnage
         this.pointsDeVie = pointsDeVie;
     }
 
-    public void RecevoirDegats(int degats)
-    {
-        pointsDeVie -= degats;
-    }
-
     public void Afficher()
     {
         Console.WriteLine("Nom : " + nom + ", PV : " + pointsDeVie);
+    }
+}
+
+class Guerrier : Personnage
+{
+    protected int armure;
+
+    public Guerrier(string nom, int pointsDeVie, int armure)
+        : base(nom, pointsDeVie)
+    {
+        this.armure = armure;
+    }
+}
+
+class Magicien : Personnage
+{
+    protected int puissanceMagique;
+
+    public Magicien(string nom, int pointsDeVie, int puissanceMagique)
+        : base(nom, pointsDeVie)
+    {
+        this.puissanceMagique = puissanceMagique;
     }
 }
 
@@ -28,10 +45,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Personnage p = new Personnage("Jean", 100);
-        p.Afficher();
+        Guerrier g = new Guerrier("Arthur", 100, 20);
+        Magicien m = new Magicien("Merlin", 80, 50);
 
-        p.RecevoirDegats(20);
-        p.Afficher();
+        g.Afficher();
+        m.Afficher();
     }
 }

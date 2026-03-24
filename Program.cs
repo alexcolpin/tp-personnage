@@ -15,6 +15,16 @@ class Personnage
     {
         Console.WriteLine("Nom : " + nom + ", PV : " + pointsDeVie);
     }
+
+    public void RecevoirDegats(int degats)
+    {
+        pointsDeVie -= degats;
+    }
+
+public void RecevoirDegats(int degats, int reduction)
+    {
+        pointsDeVie -= (degats - reduction);
+    }
 }
 
 class Guerrier : Personnage
@@ -53,10 +63,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Guerrier g = new Guerrier("Arthur", 100, 20);
-        Magicien m = new Magicien("Merlin", 80, 50);
+        Personnage p = new Personnage("Jean", 100);
 
-        g.Afficher();
-        m.Afficher();
+        p.RecevoirDegats(20);
+        p.Afficher();
+
+        p.RecevoirDegats(20, 10);
+        p.Afficher();
     }
 }

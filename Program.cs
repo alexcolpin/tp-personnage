@@ -1,6 +1,4 @@
-﻿namespace tp_personnages;
-
-using System;
+﻿using System;
 
 class Personnage
 {
@@ -13,7 +11,7 @@ class Personnage
         this.pointsDeVie = pointsDeVie;
     }
 
-    public void Afficher()
+    public virtual void Afficher()
     {
         Console.WriteLine("Nom : " + nom + ", PV : " + pointsDeVie);
     }
@@ -28,6 +26,11 @@ class Guerrier : Personnage
     {
         this.armure = armure;
     }
+
+    public override void Afficher()
+    {
+        Console.WriteLine("Guerrier : " + nom + ", PV : " + pointsDeVie + ", Armure : " + armure);
+    }
 }
 
 class Magicien : Personnage
@@ -38,6 +41,11 @@ class Magicien : Personnage
         : base(nom, pointsDeVie)
     {
         this.puissanceMagique = puissanceMagique;
+    }
+
+    public override void Afficher()
+    {
+        Console.WriteLine("Magicien : " + nom + ", PV : " + pointsDeVie + ", Puissance magique : " + puissanceMagique);
     }
 }
 

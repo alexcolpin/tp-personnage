@@ -1,5 +1,7 @@
 ﻿using System;
 
+using System;
+
 class Personnage
 {
     protected string nom;
@@ -15,26 +17,22 @@ class Personnage
     {
         Console.WriteLine("Nom : " + nom + ", PV : " + pointsDeVie);
     }
-
-    public void RecevoirDegats(int degats)
-    {
-        pointsDeVie -= degats;
-    }
-
-public void RecevoirDegats(int degats, int reduction)
-    {
-        pointsDeVie -= (degats - reduction);
-    }
 }
+
 
 class Guerrier : Personnage
 {
-    protected int armure;
+    private int armure;
 
     public Guerrier(string nom, int pointsDeVie, int armure)
         : base(nom, pointsDeVie)
     {
         this.armure = armure;
+    }
+
+    public void Attaquer() 
+    {
+        Console.WriteLine("Le guerrier attaque !");
     }
 
     public override void Afficher()
@@ -43,14 +41,20 @@ class Guerrier : Personnage
     }
 }
 
+
 class Magicien : Personnage
 {
-    protected int puissanceMagique;
+    private int puissanceMagique;
 
     public Magicien(string nom, int pointsDeVie, int puissanceMagique)
         : base(nom, pointsDeVie)
     {
         this.puissanceMagique = puissanceMagique;
+    }
+
+    public void LancerSort() 
+    {
+        Console.WriteLine("Le magicien lance un sort !");
     }
 
     public override void Afficher()
@@ -63,12 +67,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Personnage p = new Personnage("Jean", 100);
+        Guerrier g = new Guerrier("Arthur", 100, 20);
+        Magicien m = new Magicien("Merlin", 80, 50);
 
-        p.RecevoirDegats(20);
-        p.Afficher();
-
-        p.RecevoirDegats(20, 10);
-        p.Afficher();
+        g.Attaquer();     
+        m.LancerSort();   
     }
 }

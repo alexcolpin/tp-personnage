@@ -78,6 +78,17 @@ class Program
         foreach (Personnage p in personnages)
         {
             p.Afficher();
+
+            if (p is Guerrier)
+            {
+                Guerrier g = (Guerrier)p;
+                g.Attaquer();
+            }
+            else if (p is Magicien)
+            {
+                Magicien m = (Magicien)p;
+                m.LancerSort();
+            }
         }
     }
 }

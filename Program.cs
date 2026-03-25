@@ -90,5 +90,10 @@ class Program
                 m.LancerSort();
             }
         }
+
+        if (personnages[1] is Guerrier)
+        {
+            Guerrier g = (Guerrier)personnages[1];
+        }
     }
 }

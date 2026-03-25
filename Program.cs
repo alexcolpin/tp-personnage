@@ -70,36 +70,47 @@ class Magicien : Personnage
     }
 }
 
+class Archer : Personnage
+{
+    private int precision;
+
+    public Archer(string nom, int pointsDeVie, int precision)
+        : base(nom, pointsDeVie)
+    {
+        this.precision = precision;
+    }
+
+    public void Tirer()
+    {
+        Console.WriteLine("L'archer tire avec une précision de " + precision);
+    }
+
+    public override void Afficher()
+    {
+        Console.WriteLine("Archer : " + nom + ", PV : " + pointsDeVie + ", Précision : " + precision);
+    }
+}
 
 class Program
 {
     static void Main(string[] args)
+{
+    List<Personnage> personnages = new List<Personnage>();
+
+    personnages.Add(new Guerrier("Arthur", 100, 20));
+    personnages.Add(new Magicien("Merlin", 80, 50));
+    personnages.Add(new Archer("Robin", 90, 75));
+
+    foreach (Personnage p in personnages)
     {
-        List<Personnage> personnages = new List<Personnage>();
+        p.Afficher();
 
-        personnages.Add(new Guerrier("Arthur", 100, 20));
-        personnages.Add(new Magicien("Merlin", 80, 50));
-
-        foreach (Personnage p in personnages)
-        {
-            p.Afficher();
-
-            if (p is Guerrier)
-            {
-                Guerrier g = (Guerrier)p;
-                g.Attaquer();
-            }
-            else if (p is Magicien)
-            {
-                Magicien m = (Magicien)p;
-                m.LancerSort();
-            }
-        }
-
-        if (personnages[1] is Guerrier)
-        {
-            Guerrier g = (Guerrier)personnages[1];
-        }
-        Console.WriteLine(personnages[0]);
+        if (p is Guerrier g)
+            g.Attaquer();
+        else if (p is Magicien m)
+            m.LancerSort();
+        else if (p is Archer a)
+            a.Tirer();
     }
+}
 }

@@ -63,6 +63,11 @@ class Magicien : Personnage
     {
         Console.WriteLine("Magicien : " + nom + ", PV : " + pointsDeVie + ", Puissance magique : " + puissanceMagique);
     }
+
+    public override string ToString()
+    {
+        return "Nom : " + nom + ", PV : " + pointsDeVie;
+    }
 }
 
 
@@ -95,5 +100,6 @@ class Program
         {
             Guerrier g = (Guerrier)personnages[1];
         }
+        Console.WriteLine(personnages[0]);
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 
 using System;
+using System.Collections.Generic;
+
 
 class Personnage
 {
@@ -63,14 +65,19 @@ class Magicien : Personnage
     }
 }
 
+
 class Program
 {
     static void Main(string[] args)
     {
-        Guerrier g = new Guerrier("Arthur", 100, 20);
-        Magicien m = new Magicien("Merlin", 80, 50);
+        List<Personnage> personnages = new List<Personnage>();
 
-        g.Attaquer();     
-        m.LancerSort();   
+        personnages.Add(new Guerrier("Arthur", 100, 20));
+        personnages.Add(new Magicien("Merlin", 80, 50));
+
+        foreach (Personnage p in personnages)
+        {
+            p.Afficher();
+        }
     }
 }
